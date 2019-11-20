@@ -33,6 +33,9 @@ var artboardSize = 64
 var gutterSize = 36
 
 var fontAssets = {
+  'latin': [
+    'Helvetica-Bold'
+  ],
   'sans-serif': [
     'HiraKakuProN-W6',
     'HiraKakuPro-W6',
@@ -40,12 +43,13 @@ var fontAssets = {
     'SourceHanSansJP-Bold',
     'Meiryo-Bold'
   ],
-  serif: [
-    'MattisePro-B',
-    'KozMinPro-Bold'
-  ],
-  pop: [
-    'HGSoeiKakupoptai'
+  'serif': [
+    'MatissePro-B',
+    'HiraMinProN-W6',
+    'HiraMinPro-W6',
+    'NotoSerifCJKjp-Bold',
+    'SourceHanSerifJP-Bold',
+    'YuMin-Demibold'
   ]
 }
 
