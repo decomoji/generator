@@ -92,12 +92,24 @@ rows.forEach(function(row, i) {
   var charStyle = docRef.characterStyles.add(String(i))
   var attrs = charStyle.characterAttributes
 
+  var fontSize
+  if (calculated.orientation === TextOrientation.HORIZONTAL) {
+    // 単一行のアルファベット絵文字のとき、フォントサイズに最大値を設ける
+    if (
+      calculated.lines.length === 1 &&
+      !hasNonAsciiString(calculated.lines[0])
+    ) {
+      fontSize = artboardSize / 2
+    } else {
+      fontSize = artboardSize / calculated.lines.length
+    }
+  } else {
+    fontSize = artboardSize / calculated.lines[0].length
+  }
+
   attrs.fillColor = getColorByIndex(i)
   attrs.textFont = getTextFont(row.font)
-  attrs.size =
-    calculated.orientation === TextOrientation.HORIZONTAL
-      ? artboardSize / calculated.lines.length
-      : artboardSize / calculated.lines[0].length
+  attrs.size = fontSize
   attrs.autoLeading = false
   attrs.leading = attrs.size
   attrs.akiLeft = 0
@@ -112,9 +124,15 @@ rows.forEach(function(row, i) {
   textRef.left = docRef.artboards[i].artboardRect[0]
   textRef.top = docRef.artboards[i].artboardRect[1]
 
-  // 縦書きの時に中央に寄せる
+  // 中央に寄せる
   if (textRef.width < artboardSize) {
     textRef.left += (artboardSize - textRef.width) / 2
+  }
+  if (
+    calculated.orientation === TextOrientation.HORIZONTAL &&
+    fontSize * calculated.lines.length < artboardSize
+  ) {
+    textRef.top -= (artboardSize - fontSize * calculated.lines.length) / 2
   }
 
   // 今後必要のないスタイル定義なので削除する
