@@ -91,8 +91,9 @@ rows.forEach(function(row, i) {
 
   var charStyle = docRef.characterStyles.add(String(i))
   var attrs = charStyle.characterAttributes
+  var colorIndex = row.color || i
 
-  attrs.fillColor = getColorByIndex(i)
+  attrs.fillColor = getColorByIndex(colorIndex)
   attrs.textFont = getTextFont(row.font)
   attrs.size =
     calculated.orientation === TextOrientation.HORIZONTAL
