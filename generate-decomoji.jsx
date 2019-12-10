@@ -91,6 +91,7 @@ rows.forEach(function(row, i) {
 
   var charStyle = docRef.characterStyles.add(String(i))
   var attrs = charStyle.characterAttributes
+  var colorIndex = row.color || i
 
   var fontSize
   if (calculated.orientation === TextOrientation.HORIZONTAL) {
@@ -107,7 +108,7 @@ rows.forEach(function(row, i) {
     fontSize = artboardSize / calculated.lines[0].length
   }
 
-  attrs.fillColor = getColorByIndex(i)
+  attrs.fillColor = getColorByIndex(colorIndex)
   attrs.textFont = getTextFont(row.font)
   attrs.size = fontSize
   attrs.autoLeading = false
