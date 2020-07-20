@@ -1,6 +1,6 @@
-# decomoji generator
+# decomoji-generator
 
-decomoji generator はデコモジ作成支援ツールです。
+decomoji-generator はデコモジ作成支援ツールです。
 
 CSV ファイルを入力とし、Adobe Illustrator 上にデコモジを仮レイアウトした状態で展開します。
 
@@ -37,3 +37,7 @@ CSV ファイルを入力とし、Adobe Illustrator 上にデコモジを仮レ�
 3. `generate-decomoji.jsx` ファイルを選択する
 4. ファイルダイアログが立ち上がるので、入力とする CSV ファイルを選択する
 5. すこし待つと、新しいドキュメント上にアートボードとデコモジが展開される
+
+## ライセンス
+
+Copyright (c) oti. Under the [MIT License](LICENSE).
