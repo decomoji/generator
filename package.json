@@ -1,0 +1,24 @@
+{
+  "name": "decomoji-generator",
+  "version": "1.0.0",
+  "description": "csvからaiファイルを生成するAdobe JSXスクリプト",
+  "main": "generate-decomoji.jsx",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decomoji/generator.git"
+  },
+  "keywords": [
+    "decomoji",
+    "csv",
+    "ai",
+    "adobe",
+    "jsx"
+  ],
+  "author": "decomoji",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/decomoji/generator/issues"
+  },
+  "homepage": "https://github.com/decomoji/generator#readme"
+}
