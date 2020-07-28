@@ -1,6 +1,6 @@
 {
   "name": "decomoji-generator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "csvからaiファイルを生成するAdobe JSXスクリプト",
   "main": "generate-decomoji.jsx",
   "scripts": {},
