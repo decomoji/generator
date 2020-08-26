@@ -41,8 +41,7 @@ var fontAssets = {
   ]
 }
 
-/* 処理 */
-
+// 処理
 var parsedColors = colors.map(parseColor)
 
 var docRef = app.documents.add(DocumentColorSpace.RGB)
@@ -64,10 +63,11 @@ rows.forEach(function(row, i) {
     y - artboardSize
   ])
   artboard.name = row.yomi
+  // 1000個の上限に達する前に、デフォルトのアートボードを削除しておく
+  if (i === 0) {
+    docRef.artboards.remove(0)
+  }
 })
-
-// デフォルトのアートボードは削除する
-docRef.artboards.remove(0)
 
 // 文字を入れていく
 rows.forEach(function(row, i) {
