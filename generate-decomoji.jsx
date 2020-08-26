@@ -41,6 +41,10 @@ var fontAssets = {
   ]
 }
 
+// カンバス内で取りうる座標の最小値
+var minimumPositionX = 7885
+var minimumPositionY = 8587
+
 // 処理
 var parsedColors = colors.map(parseColor)
 
@@ -51,11 +55,17 @@ csvFile.open('r')
 var rows = CSVJSON.csv2json(csvFile.read())
 
 var columnCount = Math.min(rows.length, colors.length)
+var totalSizeX = (artboardSize + gutterSize) * (columnCount - 1) + artboardSize
+var totalSizeY = (artboardSize + gutterSize) * (Math.floor(rows.length / columnCount) - 1) + artboardSize
+
+// アートボード全体をカンバスの中央に配置するためのオフセット
+var offsetX = Math.min(totalSizeX / 2, minimumPositionX)
+var offsetY = Math.min(totalSizeY / 2, minimumPositionY)
 
 // アートボードを生成
 rows.forEach(function(row, i) {
-  var x = (i % columnCount) * (artboardSize + gutterSize)
-  var y = Math.floor(i / columnCount) * (artboardSize + gutterSize) * -1
+  var x = (i % columnCount) * (artboardSize + gutterSize) - offsetX
+  var y = (Math.floor(i / columnCount) * (artboardSize + gutterSize) * -1) + offsetY
   var artboard = docRef.artboards.add([
     x,
     y,
