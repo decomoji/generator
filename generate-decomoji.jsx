@@ -64,6 +64,7 @@ var offsetY = Math.min(totalSizeY / 2, minimumPositionY)
 
 // アートボードを生成
 rows.forEach(function(row, i) {
+  if (!row.yomi) return;
   var x = (i % columnCount) * (artboardSize + gutterSize) - offsetX
   var y = (Math.floor(i / columnCount) * (artboardSize + gutterSize) * -1) + offsetY
   var artboard = docRef.artboards.add([
@@ -81,6 +82,7 @@ rows.forEach(function(row, i) {
 
 // 文字を入れていく
 rows.forEach(function(row, i) {
+  if (!row.yomi) return;
   var calculated = calcDrawingText(row.content)
 
   var textRef = docRef.textFrames.add()
